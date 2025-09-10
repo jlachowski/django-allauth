@@ -72,7 +72,7 @@ def verify_jti(data: dict) -> None:
         return
     timeout = exp - time.time()
     key = f"jwt:iss={iss},jti={jti}"
-    if not cache.add(key=key, value=True, timeout=timeout):
+    if not cache.add(key, True, timeout=timeout):
         raise OAuth2Error("token already used")
 
 
